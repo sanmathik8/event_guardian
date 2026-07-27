@@ -1,0 +1,28 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Sensitive Terraform variable files
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Lambda build artifacts
+build/
+lambda_function.zip
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS / editor noise
+.DS_Store
+.vscode/
