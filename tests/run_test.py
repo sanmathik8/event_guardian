@@ -1,8 +1,15 @@
 import json
+import os
 import sys
 import boto3
 
-QUEUE_URL = "https://sqs.ap-south-1.amazonaws.com/070744430204/eventguardian-events"
+QUEUE_URL = os.environ.get("EVENTGUARDIAN_QUEUE_URL")
+
+if not QUEUE_URL:
+    print("❌ EVENTGUARDIAN_QUEUE_URL environment variable is not set.")
+    print("   Set it with:")
+    print('   export EVENTGUARDIAN_QUEUE_URL=$(terraform -chdir=../terraform output -raw event_queue_url)')
+    sys.exit(1)
 
 if len(sys.argv) != 2:
     print("Usage: python run_test.py <json_file>")
